@@ -1,6 +1,8 @@
 $(function(){
     $("#beolvas").on("click", beolvas);
     $("#kuld").on("click", adBeir);
+    $("article").delegate(".torol", "click", adTorol);
+    //majd ha lesz töröl gombunk
     
 });
 
@@ -14,8 +16,9 @@ $("article").empty();
         var nev=telefonkonyvem[i].nev;
         var tel=telefonkonyvem[i].tel;
         var kep=telefonkonyvem[i].kep;
+        var id=telefonkonyvem[i].ID;
         
-        var elem="<div> <h2>"+nev+"</h2> <p>"+tel+"</p> <p>"+kep+"</p> <button class='torol'>Töröl</button></div>";
+        var elem="<div> <h2>"+nev+"</h2> <p>"+tel+"</p> <p>"+kep+"</p> <button class='torol' id='"+id+"'>Töröl</button></div>";
          $("article").append(elem);
     }
     
@@ -61,4 +64,20 @@ function adBeir(){
         }
     });
    //űrlap adatait a képernyőre is kiírjuk
+
+}
+function adTorol() {
+    var aktElem = $(this).closest("div");
+    console.log("törlés");
+    var id = $(this).attr("id");
+    $.ajax({
+        type: "DELETE",
+        url: "torles.php?ID=" + id,
+        success: function () {
+            aktElem.remove();
+        },
+        error: function () {
+            alert("Hiba az adatok törlésekor!");
+        }
+    });
 }

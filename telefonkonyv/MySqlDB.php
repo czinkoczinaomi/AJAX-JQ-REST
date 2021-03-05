@@ -13,6 +13,10 @@ class MySqlDB {
         $this->db_felhnev = "root";
         $this->db_jelszo = "";
         $this->db_nev = "telefonkony2";
+//          $this->db_szerver = "webadmin_tanulo9szf1a@tanulo9.szf1a.oktatas.szamalk-szalezi.hu";
+//        $this->db_felhnev = "c1_tanulo9szf1a";
+//        $this->db_jelszo = "_tanulo9szf1a";
+//        $this->db_nev = "c1ABtanulo9szf1a";
         $this->kapcsolat();
     }
 
